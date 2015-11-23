@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('novo-cliente', ['as' => 'client.create', 'uses' => 'ClientController@create']);
+Route::post('novo-cliente', ['as' => 'client.store', 'uses' => 'ClientController@store']);
+
 Route::get('/', function () {
     return view('clientes.cadastrar');
 });

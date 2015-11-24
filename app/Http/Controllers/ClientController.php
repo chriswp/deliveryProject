@@ -61,8 +61,11 @@ class ClientController extends Controller
     {
        $user = $this->createUser($request->name, $request->email, $request->password);
 
-        $data = $request->all();
-        $this->client->save($user->($data));
+       // attach user_id FK to request
+       $request->request->add(['user_id' => $user]);
+
+       // create a client with request
+       $this->client->create($request->all());
     }
 
     /**
